@@ -18,6 +18,8 @@ spec:
       ttlSecondsAfterFinished: {{ .Values.ttlSecondsAfterFinished }}
       template:
         metadata:
+          annotations:
+            sidecar.istio.io/inject: "false"
           labels:
             {{- include "node-api-runtime.selectorLabels" . | nindent 12 }}
               {{- with .Values.labels -}}
